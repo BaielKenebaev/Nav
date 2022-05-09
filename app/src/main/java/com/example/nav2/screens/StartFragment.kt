@@ -1,0 +1,42 @@
+package com.example.nav2.screens
+
+import android.os.Bundle
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.navigation.NavController
+import com.example.nav2.MainActivity
+import com.example.nav2.R
+import com.example.nav2.User
+import com.example.nav2.databinding.ActivityMainBinding
+import com.example.nav2.databinding.FragmentStartBinding
+
+
+
+class StartFragment : Fragment() {
+    lateinit var binding: FragmentStartBinding
+
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = FragmentStartBinding.inflate(layoutInflater,container,false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        var user = User("baiel","admin")
+        //var text=user.showInfo()
+        binding.textView2.text=user.showInfo()
+
+        binding.startBtn.setOnClickListener(){
+            MAIN.navController.navigate(R.id.action_startFragment_to_contentFragment)
+        }
+    }
+
+}
+
